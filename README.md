@@ -1,13 +1,13 @@
-# esp32C3_DevKit_Rust
+# ESP32C3 DevKit Rust
 Welcome to the ESP32C3 DevKit-C project! This repository demonstrates how to use the
 
-ESP32C3 DevKit-C Project with SHTC3, ICM-42670-P, and WS2812
+#ESP32C3 DevKit-C Project with SHTC3, ICM-42670-P, and WS2812
 Welcome to the ESP32C3 DevKit-C project! This repository demonstrates how to use the ESP32C3 development board with C to interface with the SHTC3 temperature and humidity sensor, the ICM-42670-P Inertial Measurement Unit (IMU), and the WS2812 LED.
 
-Overview
+##Overview
 This project showcases the capabilities of the ESP32C3 development board by integrating it with the SHTC3 sensor for environmental data, the ICM-42670-P IMU for motion data, and the WS2812 LED for visual feedback. The code is written in C for efficient embedded systems programming.
 
-Features
+##Features
 C Programming: Utilizing the efficiency and control of C language for embedded development.
 ESP32C3 Development Board: Leveraging the Wi-Fi and Bluetooth capabilities of the ESP32C3.
 SHTC3 Sensor Integration: Accurate temperature and humidity readings.
