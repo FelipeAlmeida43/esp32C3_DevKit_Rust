@@ -145,34 +145,28 @@ void app_main(void)
     	int button_state = read_button_debounced();
 
 
-    	       //shtc3_send_command(SHTC3_WAKEUP_CMD);
-    	       //vTaskDelay(pdMS_TO_TICKS(1)); // Wait for wake up
+    	if (button_state != -1) {
+    		if (button_state == 0) {
 
-    	               // Trigger a measurement
-    	               shtc3_send_command(SHTC3_MEASURE_CMD);
-    	               vTaskDelay(pdMS_TO_TICKS(15)); // Measurement time
-    	               if (shtc3_read_data(&sensor) == ESP_OK) {
-    	                          float temperature = shtc3_raw_to_temperature(sensor.temperature);
-    	                          float humidity = shtc3_raw_to_humidity(sensor.humidity);
-    	                          printf("Temperature: %.2f C, Humidity: %.2f%%\n", temperature, humidity);
-    	                      } else {
-    	                          printf("Failed to read from sensor\n");
-    	                      }
-
-    	                      // Put the sensor to sleep
-    	                     // shtc3_send_command(SHTC3_SLEEP_CMD);
-
-    	        if (button_state != -1) {
-    	            if (button_state == 0) {
     	            	ws2812_set_color(32, 0, 0);
     	            	ESP_LOGI(__func__,"Button Pressed\r\n");
-    	            } else {
+    	            	shtc3_send_command(SHTC3_MEASURE_CMD);
+    	            	vTaskDelay(pdMS_TO_TICKS(15)); // Measurement time
+    	            	if (shtc3_read_data(&sensor) == ESP_OK) {
+
+    	            		float temperature = shtc3_raw_to_temperature(sensor.temperature);
+    	            	    float humidity = shtc3_raw_to_humidity(sensor.humidity);
+    	            	    printf("Temperature: %.2f C, Humidity: %.2f%%\n", temperature, humidity);
+    	            	}else {
+     	                          printf("Failed to read from sensor\n");
+     	                      }
+    	            }else{
     	                //printf("Button released!\n");
     	            }
     	        } else {
     	            //printf("Button state unstable, skipping\n");
     	        }
 
-    	        vTaskDelay(pdMS_TO_TICKS(1000));  // Main loop delay
+    	        vTaskDelay(pdMS_TO_TICKS(100));  // Main loop delay
     }
 }
