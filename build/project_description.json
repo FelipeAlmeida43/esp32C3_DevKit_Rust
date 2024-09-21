@@ -1,7 +1,7 @@
 {
     "version":            "1.1",
     "project_name":       "app-template",
-    "project_version":    "b2f38e9-dirty",
+    "project_version":    "61de1dc-dirty",
     "project_path":       "C:/Espressif/frameworks/esp-idf-v5.3.1/esp32C3_DevKit",
     "idf_path":           "C:/Espressif/frameworks/esp-idf-v5.3.1",
     "build_dir":          "C:/Espressif/frameworks/esp-idf-v5.3.1/esp32C3_DevKit/build",

@@ -163,7 +163,9 @@ void app_main(void)
     	            	    float humidity = shtc3_raw_to_humidity(sensor.humidity);
     	            	    printf("Temperature: %.2f C, Humidity: %.2f%%\n", temperature, humidity);
     	            	    char json[100];
-    	            	    sprintf(json,"{Temperature: %.2f , Humidity: %.2f}", temperature, humidity);
+    	            	    sprintf(json, "{\"Temperature\": %.2f, \"Humidity\": %.2f}", temperature, humidity);
+
+    	            	    //sprintf(json,"{Temperature: %.2f , Humidity: %.2f}", temperature, humidity);
     	            	    esp_mqtt_client_publish(mqtt_client, "esp32c3/Weather", json, strlen(json), QOS, 0);
     	            	  
     	            	}else {
@@ -176,6 +178,6 @@ void app_main(void)
     	            //printf("Button state unstable, skipping\n");
     	        }
 
-    	        vTaskDelay(pdMS_TO_TICKS(60000));  // Main loop delay
+    	        vTaskDelay(pdMS_TO_TICKS(10000));  // Main loop delay
     }
 }
