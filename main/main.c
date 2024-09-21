@@ -176,6 +176,6 @@ void app_main(void)
     	            //printf("Button state unstable, skipping\n");
     	        }
 
-    	        vTaskDelay(pdMS_TO_TICKS(1000));  // Main loop delay
+    	        vTaskDelay(pdMS_TO_TICKS(60000));  // Main loop delay
     }
 }
