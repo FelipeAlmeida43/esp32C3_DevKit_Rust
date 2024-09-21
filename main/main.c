@@ -5,10 +5,12 @@
 
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
+#include "mqtt_client.h"
 #include "ws2812/ws2812.h"
 #include "timer/Timer.h"
 #include "button/button.h"
 #include "sensor/i2Csensor.h"
+#include "mqtt/mqtt.h"
 #include "esp_log.h"
 #include "freertos/event_groups.h"
 #include "esp_system.h"
@@ -19,9 +21,10 @@
 #include "lwip/err.h"
 #include "lwip/sys.h"
 extern bool flagResetModem;
+extern esp_mqtt_client_handle_t mqtt_client;
 #define GPIO_PIN 2
-#define WIFI_SSID "MeshCasa"
-#define WIFI_PASS "felipeepamela1101"
+#define WIFI_SSID "WIFI_MESH_IST"
+#define WIFI_PASS "ac1ce0ss6_mesh"
 
 #define WIFI_CONNECTED_BIT BIT0
 #define WIFI_FAIL_BIT      BIT1
@@ -55,6 +58,7 @@ static void event_handler(void* arg, esp_event_base_t event_base,
         ESP_LOGI(TAG, "got ip:" IPSTR, IP2STR(&event->ip_info.ip));
         ws2812_set_color(0, 32, 0);
         s_retry_num = 0;
+        mqtt_app_start();
         xEventGroupSetBits(s_wifi_event_group, WIFI_CONNECTED_BIT);
     }
 }
@@ -87,7 +91,7 @@ void wifi_init_sta(void)
         .sta = {
             .ssid = WIFI_SSID,
             .password = WIFI_PASS,
-            .threshold.authmode = WIFI_AUTH_WPA2_WPA3_PSK,
+            .threshold.authmode = WIFI_AUTH_WPA_WPA2_PSK,
             .sae_pwe_h2e = WPA3_SAE_PWE_BOTH,
             .sae_h2e_identifier = "",
         },
@@ -144,11 +148,12 @@ void app_main(void)
 
     	int button_state = read_button_debounced();
 
+		if(1){
+    	//if (button_state != -1) {
+    		if(1){
+    		//if (button_state == 0) {
 
-    	if (button_state != -1) {
-    		if (button_state == 0) {
-
-    	            	ws2812_set_color(32, 0, 0);
+    	            	//ws2812_set_color(32, 0, 0);
     	            	ESP_LOGI(__func__,"Button Pressed\r\n");
     	            	shtc3_send_command(SHTC3_MEASURE_CMD);
     	            	vTaskDelay(pdMS_TO_TICKS(15)); // Measurement time
@@ -157,6 +162,10 @@ void app_main(void)
     	            		float temperature = shtc3_raw_to_temperature(sensor.temperature);
     	            	    float humidity = shtc3_raw_to_humidity(sensor.humidity);
     	            	    printf("Temperature: %.2f C, Humidity: %.2f%%\n", temperature, humidity);
+    	            	    char json[100];
+    	            	    sprintf(json,"{Temperature: %.2f , Humidity: %.2f}", temperature, humidity);
+    	            	    esp_mqtt_client_publish(mqtt_client, "esp32c3/Weather", json, strlen(json), QOS, 0);
+    	            	  
     	            	}else {
      	                          printf("Failed to read from sensor\n");
      	                      }
@@ -167,6 +176,6 @@ void app_main(void)
     	            //printf("Button state unstable, skipping\n");
     	        }
 
-    	        vTaskDelay(pdMS_TO_TICKS(100));  // Main loop delay
+    	        vTaskDelay(pdMS_TO_TICKS(1000));  // Main loop delay
     }
 }

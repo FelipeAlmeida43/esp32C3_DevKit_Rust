@@ -7,6 +7,7 @@
 
 #ifndef MAIN_WS2812_WS2812_H_
 #define MAIN_WS2812_WS2812_H_
+#include <stdint.h>
 void ws2812_set_color(uint8_t red, uint8_t green, uint8_t blue);
 void ws2812_init(int pin);
 #define WS2812_FREQ_HZ 800000

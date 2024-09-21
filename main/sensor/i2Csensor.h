@@ -8,6 +8,8 @@
 #ifndef MAIN_SENSOR_I2CSENSOR_H_
 #define MAIN_SENSOR_I2CSENSOR_H_
 
+#include "esp_err.h"
+#include <stdint.h>
 #define I2C_MASTER_SCL_IO 8     // GPIO number for I2C master clock
 #define I2C_MASTER_SDA_IO 10      // GPIO number for I2C master data
 #define I2C_MASTER_NUM I2C_NUM_0 // I2C port number for master
@@ -36,4 +38,5 @@ void i2c_master_init();
 esp_err_t shtc3_send_command(uint16_t command);
 esp_err_t shtc3_read_data(shtc3_data_t *data);
 esp_err_t shtc3_read_id(uint16_t *id);
+
 #endif /* MAIN_SENSOR_I2CSENSOR_H_ */
