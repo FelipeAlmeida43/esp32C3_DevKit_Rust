@@ -23,8 +23,8 @@
 extern bool flagResetModem;
 extern esp_mqtt_client_handle_t mqtt_client;
 #define GPIO_PIN 2
-#define WIFI_SSID "WIFI_MESH_IST"
-#define WIFI_PASS "ac1ce0ss6_mesh"
+#define WIFI_SSID "MeshCasa"
+#define WIFI_PASS "felipeepamela1101"
 
 #define WIFI_CONNECTED_BIT BIT0
 #define WIFI_FAIL_BIT      BIT1
@@ -45,17 +45,17 @@ static void event_handler(void* arg, esp_event_base_t event_base,
         if (s_retry_num < 30) {
             esp_wifi_connect();
             s_retry_num++;
-            ESP_LOGW(TAG, "Trying to connect to WiFi");
+            ESP_LOGW(__func__, "Trying to connect to WiFi");
 			ws2812_set_color(32, 0, 0);
         } else {
             xEventGroupSetBits(s_wifi_event_group, WIFI_FAIL_BIT);
             ws2812_set_color(0, 0, 0);
         }
-        ESP_LOGE(TAG, "Failed to connect to WiFi");
+        ESP_LOGE(__func__, "Failed to connect to WiFi");
         ws2812_set_color(0, 0, 32);
     } else if (event_base == IP_EVENT && event_id == IP_EVENT_STA_GOT_IP) {
         ip_event_got_ip_t* event = (ip_event_got_ip_t*) event_data;
-        ESP_LOGI(TAG, "got ip:" IPSTR, IP2STR(&event->ip_info.ip));
+        ESP_LOGI(__func__, "got ip:" IPSTR, IP2STR(&event->ip_info.ip));
         ws2812_set_color(0, 32, 0);
         s_retry_num = 0;
         mqtt_app_start();
@@ -108,9 +108,9 @@ void wifi_init_sta(void)
             portMAX_DELAY);
 
     if (bits & WIFI_CONNECTED_BIT) {
-        ESP_LOGI(TAG, "Connected!");
+        ESP_LOGI(__func__, "Connected!");
     } else if (bits & WIFI_FAIL_BIT) {
-        ESP_LOGE(TAG, "Failed to connect!");
+        ESP_LOGE(__func__, "Failed to connect!");
     }
 }
 float shtc3_raw_to_temperature(uint16_t raw_value) {

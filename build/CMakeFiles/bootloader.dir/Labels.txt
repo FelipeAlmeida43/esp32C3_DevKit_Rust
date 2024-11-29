@@ -1,13 +1,13 @@
 # Target labels
  bootloader
 # Source files and their labels
-C:/Espressif/frameworks/esp-idf-v5.3.1/esp32C3_DevKit/build/CMakeFiles/bootloader
-C:/Espressif/frameworks/esp-idf-v5.3.1/esp32C3_DevKit/build/CMakeFiles/bootloader.rule
-C:/Espressif/frameworks/esp-idf-v5.3.1/esp32C3_DevKit/build/CMakeFiles/bootloader-complete.rule
-C:/Espressif/frameworks/esp-idf-v5.3.1/esp32C3_DevKit/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
-C:/Espressif/frameworks/esp-idf-v5.3.1/esp32C3_DevKit/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
-C:/Espressif/frameworks/esp-idf-v5.3.1/esp32C3_DevKit/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
-C:/Espressif/frameworks/esp-idf-v5.3.1/esp32C3_DevKit/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
-C:/Espressif/frameworks/esp-idf-v5.3.1/esp32C3_DevKit/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
-C:/Espressif/frameworks/esp-idf-v5.3.1/esp32C3_DevKit/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
-C:/Espressif/frameworks/esp-idf-v5.3.1/esp32C3_DevKit/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule
+C:/Users/FelipeAlmeida/git/esp32C3_DevKit_Rust/build/CMakeFiles/bootloader
+C:/Users/FelipeAlmeida/git/esp32C3_DevKit_Rust/build/CMakeFiles/bootloader.rule
+C:/Users/FelipeAlmeida/git/esp32C3_DevKit_Rust/build/CMakeFiles/bootloader-complete.rule
+C:/Users/FelipeAlmeida/git/esp32C3_DevKit_Rust/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+C:/Users/FelipeAlmeida/git/esp32C3_DevKit_Rust/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+C:/Users/FelipeAlmeida/git/esp32C3_DevKit_Rust/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+C:/Users/FelipeAlmeida/git/esp32C3_DevKit_Rust/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+C:/Users/FelipeAlmeida/git/esp32C3_DevKit_Rust/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+C:/Users/FelipeAlmeida/git/esp32C3_DevKit_Rust/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+C:/Users/FelipeAlmeida/git/esp32C3_DevKit_Rust/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule
